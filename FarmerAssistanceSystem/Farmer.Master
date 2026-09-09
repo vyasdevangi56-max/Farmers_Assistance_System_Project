@@ -1,0 +1,80 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Farmer.Master.cs" Inherits="FarmerAssistanceSystem.FarmerMaster" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Farmer Dashboard - FAS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="<%= ResolveUrl("~/Content/Site.css") %>" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="dashboard-wrapper">
+            <!-- Sidebar -->
+            <nav class="sidebar">
+                <div class="sidebar-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="bi bi-tree-fill text-primary"></i> FAS Portal</h5>
+                    <button type="button" class="btn btn-sm text-white d-md-none" id="sidebarToggle">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="<%= ResolveUrl("~/Farmer/FarmerDashboard.aspx") %>"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                    <li><a href="<%= ResolveUrl("~/Farmer/FarmerProfile.aspx") %>"><i class="bi bi-person"></i> My Profile</a></li>
+                    <li><a href="<%= ResolveUrl("~/Farmer/MySubsidies.aspx") %>"><i class="bi bi-cash-coin"></i> My Subsidies</a></li>
+                    <li><a href="<%= ResolveUrl("~/Farmer/SubsidyApplication.aspx") %>"><i class="bi bi-file-earmark-plus"></i> Apply for Subsidy</a></li>
+                    <li><a href="<%= ResolveUrl("~/Farmer/MyApplications.aspx") %>"><i class="bi bi-journal-check"></i> My Applications</a></li>
+                    <li><a href="<%= ResolveUrl("~/Farmer/RecommendedSchemes.aspx") %>"><i class="bi bi-star"></i> Recommended</a></li>
+                    <li><a href="<%= ResolveUrl("~/Farmer/FarmerProducts.aspx") %>"><i class="bi bi-box"></i> Agricultural Products</a></li>
+                    <li><a href="<%= ResolveUrl("~/Farmer/MarketPricesFarmer.aspx") %>"><i class="bi bi-graph-up"></i> Market Prices</a></li>
+                    <li><a href="<%= ResolveUrl("~/Farmer/Notifications.aspx") %>"><i class="bi bi-bell"></i> Notifications</a></li>
+                    <li><a href="<%= ResolveUrl("~/Farmer/FarmerSettings.aspx") %>"><i class="bi bi-gear"></i> Settings</a></li>
+                    <li><a href="<%= ResolveUrl("~/Farmer/FarmerLogin.aspx") %>"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Topbar -->
+                <header class="d-flex justify-content-between align-items-center mb-4 bg-white p-3 rounded shadow-sm">
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-light d-md-none me-3" onclick="document.querySelector('.sidebar').classList.toggle('collapsed')">
+                            <i class="bi bi-list"></i>
+                        </button>
+                        <div class="input-group" style="max-width: 300px;">
+                            <input type="text" class="form-control border-end-0" placeholder="Search..." id="searchInput">
+                            <button class="btn border border-start-0 bg-white" type="button"><i class="bi bi-search text-muted"></i></button>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                        <a href="<%= ResolveUrl("~/Farmer/Notifications.aspx") %>" class="position-relative text-dark">
+                            <i class="bi bi-bell fs-5"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">
+                                3
+                            </span>
+                        </a>
+                        <div class="dropdown">
+                            <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark" data-bs-toggle="dropdown">
+                                <img src="https://ui-avatars.com/api/?name=Ramesh+Patel&background=2e7d32&color=fff" alt="User" class="rounded-circle me-2" width="32" height="32">
+                                <strong>Ramesh Patel</strong>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow">
+                                <li><a class="dropdown-item" href="<%= ResolveUrl("~/Farmer/FarmerProfile.aspx") %>">Profile</a></li>
+                                <li><a class="dropdown-item" href="<%= ResolveUrl("~/Farmer/FarmerSettings.aspx") %>">Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="<%= ResolveUrl("~/Farmer/FarmerLogin.aspx") %>">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<%= ResolveUrl("~/Scripts/site.js") %>"></script>
+</body>
+</html>
